@@ -2,19 +2,150 @@
 layout: default
 ---
 
-<div class="home">
+  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  <div class="posts">
-    {% for post in paginator.posts %}
-      <div class="post">
-        <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
-          <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-          <h3 class="h2 post-title">{{ post.title }}</h3>
-          <p class="post-summary">{{ post.summary }}</p>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
+<script>
+  
+// for the youtube player pause video
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  {% include pagination.html %}
+// Create YouTube player(s) after the API code downloads.
+var player1;
+var player2;
+
+
+function onYouTubeIframeAPIReady() {
+    player1 = new YT.Player('player-1');
+    player2 = new YT.Player('player-2');
+}  
+  
+//youtube video code ends  
+$(document).ready(function(){
+ 
+//how can we build this hover button
+  $(".howcan").hover(
+    function(){
+    $(this).addClass('howcanbuttonbg'); 
+    },
+    function(){
+     $(this).removeClass('howcanbuttonbg');
+    });
+
+
+// how can we built this click button function
+  $(".howcan").click(function(){
+      player1.pauseVideo();
+      $(".wikihive").removeClass('wikibuttonbg');
+      $(this).addClass('wikibuttonbg');
+      $(".holderh").css("background-color","silver");
+      $(".holderw").css("background-color","#fafafa");
+      $(".wikivideo").hide();
+      $(".wikipicture").hide();
+      $(".howcanpicture").show();
+    
+
+    });
+  
+  
+   $(".howcanpicture").click(function(){
+     $(".howcanpicture").hide();
+     $(".howcanvideo").show(); 
+      player2.playVideo();
+      $(this).hide();  
+  });
+  
+// what is wikihive? hover button  
+  $(".wikihive").hover (
+    function(){
+     $(this).addClass('howcanbuttonbg'); 
+    },
+    function(){
+     $(this).removeClass('howcanbuttonbg');
+    });
+  
+// what is wikihive when clicked  
+  $(".wikihive").click(function(){
+      player2.stopVideo();
+      $(".howcan").removeClass('wikibuttonbg');
+      $(this).addClass('wikibuttonbg');
+      $(".holderw").css("background-color","silver");
+      $(".holderh").css("background-color","#fafafa");
+      $(".wikivideo").hide();
+      $(".howcanvideo").hide(); 
+      $(".howcanpicture").hide();
+      $(".wikipicture").show();
+    });
+  
+//wikipicture - play video when clicked at image
+  $(".wikipicture").click(function(){
+    player1.playVideo();
+    $(".wikivideo").show();
+    $(this).hide();  
+  });
+});
+</script>
+
+
+  <div class = "topb">
+      <div class= "wikihive wikibuttonbg"> What is Wikihive? </div>
+      <div class = "howcan">  How can we build it? </div>
+    </div>
+ 
+  <div class = "wikivideo">
+    <div class = 'videowrapper'>
+        <iframe id= "player-1" width="420" height="315" src="//www.youtube.com/embed/2djrFyZnxhw?enablejsapi=1&autohide=1&theme=light&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </div>
 </div>
+
+  <div class = "wikipicture">
+    <div class = 'videowrapper'>
+      <img src = "/images/wikipicture.png">
+    </div>
+</div>
+
+  <div class = "howcanpicture">
+    <div class = 'videowrapper'>
+      <img src = "/images/allhives.png">
+    </div>
+</div>
+
+
+  <div class = "howcanvideo">
+    <div class = 'videowrapper'>
+        <iframe id = "player-2" width="420" height="315" src="//www.youtube.com/embed/RvZY6PE8XSM?enablejsapi=1&autohide=1&theme=light&showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class = "holderw">
+  <h3>Wikihive</h3>
+  Wikihive is practical place for online self leaners to socialize, learn and grow.It provides online learners with a university - like surroundings. 
+</div>
+
+ 
+
+<div class = "holderh">
+  <h3>Inexpensive modular desings</h3>
+  Wikihive uses an inexpensive modular designs such as Shipping Container, MicroHouse and WikiHouse to build and grow.
+  <img src = "/images/3hives.png">
+</div>
+
+
+<div class = "holderw">
+  <h3>Community driven</h3>
+  Wikihive build and funded by it’s own community therefore automatically foster a community driven education, that empowers local community beyond their expectation
+  <img src = "/images/com.png">
+</div>
+
+
+
+<div class = "holderh">
+  <h3>Share your ideas</h3>
+  Wikihives is in concept phase. if you have any better ideas please share it on our forum. 
+</div>
+  
+    
+  

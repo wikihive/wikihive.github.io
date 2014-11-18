@@ -510,3 +510,96 @@ Copyright (c) 2014 Daniel Eden
   -webkit-animation-name: fadeInDown;
           animation-name: fadeInDown;
 }
+
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* personal */
+
+.topb {
+  display:table;
+  margin-left: auto;
+  margin-right: auto;
+
+  
+}
+
+.howcan {
+  display: table-cell;
+
+  font-size: 20px;
+  height: 30px;
+  width: 160px;
+  text-align:center;
+  vertical-align:middle;
+  border-right: 1px solid silver;
+  border-left: 1px solid silver;
+  cursor:pointer;
+}
+
+.wikihive {
+  display:table-cell;
+  font-size: 20px;
+  height: 30px;
+  width: 160px;
+  text-align:center;
+  vertical-align:middle;
+  cursor:pointer;
+  border-left: 1px solid silver;
+}
+
+.wikibuttonbg {
+    background-color:silver;
+}
+.howcanbuttonbg{
+  background-color:silver;
+}
+
+.wikivideo {
+  display:none;
+}
+
+.howcanvideo {
+  display:none;
+}
+
+.holderw {
+  background-color: silver;
+  font-size: 20px;
+}
+
+.holderh {
+  background-color: #fafafa;
+  font-size: 20px;
+}
+
+.googleforum {
+  width:50%;
+}
+
+.wikipicture {
+  display:block;
+  background-color: #fafafa;
+  cursor:pointer;
+
+}
+
+.howcanpicture {
+  background-color: #fafafa;
+  display: none;
+  cursor: pointer;
+}
