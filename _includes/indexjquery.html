@@ -1,0 +1,97 @@
+
+<script src="/jquery/jquery-1.11.1.js"></script>
+
+<script> 
+// for the youtube player pause video
+  var tag = document.createElement('script');
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Create YouTube player(s) after the API code downloads.
+  var player1;
+  var player2;
+
+
+  function onYouTubeIframeAPIReady() {
+    player1 = new YT.Player('player-1');
+    player2 = new YT.Player('player-2');
+}  
+  
+//youtube video code ends  
+$(document).ready(function(){
+ 
+//how can we build this hover button
+  $(".howcan").hover(
+      function(){
+         $(this).addClass('howcanbuttonbg'); 
+      },
+      function(){
+         $(this).removeClass('howcanbuttonbg');
+    });
+
+
+// how can we built this click button function
+  $(".howcan").click(function(){
+        player1.pauseVideo();
+        $(".wikihive").removeClass('wikibuttonbg');
+        $(this).addClass('wikibuttonbg');
+        $(".holderh").css("background-color","silver");
+        $(".holderw").css("background-color","#fafafa");
+        $(".wikivideo").hide();
+        $(".wikipicture").hide();
+        $(".howcanpicture").show();
+
+  });
+  
+   $(".howcanpicture").click(function(){
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+           $(".howcanpicture").hide();
+           $(".howcanvideo").show(); 
+           $(this).hide();  
+    }
+       else {
+            $(".howcanpicture").hide();
+            $(".howcanvideo").show(); 
+             player2.playVideo();
+            $(this).hide();   
+       }
+  });
+  
+// what is wikihive? hover button  
+  $(".wikihive").hover (
+      function(){
+         $(this).addClass('howcanbuttonbg'); 
+    },
+      function(){
+         $(this).removeClass('howcanbuttonbg');
+    });
+  
+// what is wikihive when clicked  
+   $(".wikihive").click(function(){
+       player2.stopVideo();
+       $(".howcan").removeClass('wikibuttonbg');
+       $(this).addClass('wikibuttonbg');
+       $(".holderw").css("background-color","silver");
+       $(".holderh").css("background-color","#fafafa");
+       $(".wikivideo").hide();
+       $(".howcanvideo").hide(); 
+       $(".howcanpicture").hide();
+       $(".wikipicture").show();
+ });
+  
+//wikipicture - play video when clicked at image
+  $(".wikipicture").click(function(){ 
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+        $(".wikivideo").show();
+        $(this).hide();  
+      }
+    else {
+        player1.playVideo();
+        $(".wikivideo").show();
+        $(this).hide(); 
+      }
+    });
+  });
+</script>
+
