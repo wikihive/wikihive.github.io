@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-
-  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
@@ -47,15 +45,20 @@ $(document).ready(function(){
       $(".wikipicture").hide();
       $(".howcanpicture").show();
     
-
     });
   
-  
    $(".howcanpicture").click(function(){
-     $(".howcanpicture").hide();
-     $(".howcanvideo").show(); 
-      player2.playVideo();
-      $(this).hide();  
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+         $(".howcanpicture").hide();
+         $(".howcanvideo").show(); 
+          $(this).hide();  
+    }
+       else {
+          $(".howcanpicture").hide();
+         $(".howcanvideo").show(); 
+         player2.playVideo();
+          $(this).hide();   
+       }
   });
   
 // what is wikihive? hover button  
@@ -82,9 +85,17 @@ $(document).ready(function(){
   
 //wikipicture - play video when clicked at image
   $(".wikipicture").click(function(){
-    player1.playVideo();
+   
+    if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
     $(".wikivideo").show();
     $(this).hide();  
+    }
+
+    else {
+    player1.playVideo();
+    $(".wikivideo").show();
+    $(this).hide(); 
+    }
   });
 });
 </script>
@@ -100,7 +111,7 @@ $(document).ready(function(){
         <iframe id= "player-1" width="420" height="315" src="//www.youtube.com/embed/2djrFyZnxhw?enablejsapi=1&autohide=1&theme=light&showinfo=0" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
-
+  
   <div class = "wikipicture">
     <div class = 'videowrapper'>
       <img src = "/images/wikipicture.png">
@@ -146,6 +157,5 @@ $(document).ready(function(){
   <h3>Share your ideas</h3>
   Wikihives is in concept phase. if you have any better ideas please share it on our forum. 
 </div>
-  
-    
+
   
