@@ -4,7 +4,7 @@ email:
 author:      
 description: "wikihive - Lets re-invent education together"
 baseurl:     
-url:         "http://wikihive.org
+url: "http://wikihive.org"
 
 permalink: /blog/:title
  
